@@ -1,6 +1,6 @@
-﻿'use strict';
+'use strict';
 
-window.DefineScript('PlayControl, Based on: Track Info + Seekbar + Buttons by marc2003', {
+window.DefineScript('PlayControl, Based on: track info + seekbar + buttons.js and last.fm lover.js by marc2003', {
   author: 'whistlechips',
   options: {
     grab_focus: false
@@ -338,7 +338,7 @@ function lfm_icons() {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-//callbacks
+//										               callbacks       		                      //
 ////////////////////////////////////////////////////////////////////////////////
 
 function on_colors_changed() {
