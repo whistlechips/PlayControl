@@ -1,12 +1,12 @@
 # PlayControl
-PlayControl Spider Monkey javascript for Foobar2000 with over two dozen user configurable settings via the SMP Properties dialog.
+PlayControl Spider Monkey single panel javascript for Foobar2000 with over two dozen user configurable settings via the SMP Properties dialog.  Based on: "track info + seekbar + buttons.js" and "last.fm lover.js" by @marc2k3.
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
 
 Foobar2000: https://www.foobar2000.org/download
 
-Spider Monkey Panel component: https://theqwertiest.github.io/foo_spider_monkey_panel/
+Spider Monkey Panel component, @TheQwertiest: https://theqwertiest.github.io/foo_spider_monkey_panel/
 
 Segoe Fluent Icons font: https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font
 
