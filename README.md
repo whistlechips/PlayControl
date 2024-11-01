@@ -3,6 +3,7 @@ PlayControl Spider Monkey javascript for Foobar2000 with over two dozen user con
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
+
 Foobar2000: https://www.foobar2000.org/download
 
 Spider Monkey Panel component: https://theqwertiest.github.io/foo_spider_monkey_panel/
