@@ -1,5 +1,5 @@
 # PlayControl
-PlayControl Spider Monkey single panel javascript for Foobar2000 with over two dozen user configurable settings via the SMP Properties dialog.  Based on: "track info + seekbar + buttons.js" and "last.fm lover.js" by @marc2k3.
+Foobar2000 Spider Monkey (@TheQwertiest) single panel javascript with user configurable settings via the SMP Properties dialog.  Based on: "track info + seekbar + buttons.js" and "last.fm lover.js" by @marc2k3.
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
