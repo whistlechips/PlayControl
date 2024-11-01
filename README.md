@@ -1,7 +1,6 @@
 # PlayControl
 PlayControl Spider Monkey script for Foobar2000
-
-
+![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
 Fonts: 
