@@ -3,7 +3,7 @@ PlayControl Spider Monkey javascript for Foobar2000
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
-Fonts: 
+Segoe Fluent Icons font: https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font
 
 Full screen shot with PlayControl SMP panel (along with all others) under control of the PS Splitter at the top of the screen:
 ![image](https://github.com/user-attachments/assets/10a6f8f9-49f6-4e5a-a8e4-9c853f5ec1a5)
