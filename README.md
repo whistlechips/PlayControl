@@ -3,6 +3,8 @@ PlayControl Spider Monkey javascript for Foobar2000 with over two dozen user con
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
+Foobar2000: https://www.foobar2000.org/download
+Spider Monkey Panel component: https://theqwertiest.github.io/foo_spider_monkey_panel/
 Segoe Fluent Icons font: https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font
 
 Full screen ColumnsUI shot with PlayControl SMP panel at the bottom of the Foobar2000 window, under control of the PS Splitter at the top of the screen:
