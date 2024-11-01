@@ -1,16 +1,17 @@
 # PlayControl
-PlayControl Spider Monkey javascript for Foobar2000
+PlayControl Spider Monkey javascript for Foobar2000 with over two dozen user configurable settings via the SMP Properties dialog.
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
 Requirements:
 Segoe Fluent Icons font: https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font
 
-Full screen shot with PlayControl SMP panel (along with all others) under control of the PS Splitter at the top of the screen:
+Full screen ColumnsUI shot with PlayControl SMP panel at the bottom of the Foobar2000 window, under control of the PS Splitter at the top of the screen:
 ![image](https://github.com/user-attachments/assets/10a6f8f9-49f6-4e5a-a8e4-9c853f5ec1a5)
 
 Suggested Height of panel: 75px (can be adjusted with caution)
 
 Start with:
+
 ![image](https://github.com/user-attachments/assets/83984343-a16c-41f1-9116-d6baf71fb2bf)
 
 Spider Monkey Configuration -> Properties: (with default values)
