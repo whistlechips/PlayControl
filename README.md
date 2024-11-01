@@ -9,6 +9,7 @@ Foobar2000: https://www.foobar2000.org/download
 Spider Monkey Panel component, @TheQwertiest: https://theqwertiest.github.io/foo_spider_monkey_panel/
 
 Segoe Fluent Icons font: https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font
+
 Roboto font: https://fonts.google.com/specimen/Roboto
 
 Full screen ColumnsUI shot with PlayControl SMP panel at the bottom of the Foobar2000 window, under control of the PS Splitter at the top of the screen:
