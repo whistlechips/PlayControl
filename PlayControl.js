@@ -14,7 +14,7 @@ include(fb.ComponentPath + 'samples\\complete\\js\\lastfm.js');
 include(fb.ComponentPath + 'samples\\complete\\js\\volume.js');
 include(fb.ComponentPath + 'samples\\complete\\js\\albumart.js');
 
-const _tooltip = window.CreateTooltip('Roboto', _scale(7)); // I don't know why this overrides function tooltip() is helper.js.
+const _tooltip = utils.CheckFont("Roboto") ? window.CreateTooltip('Roboto', _scale(7)) : window.CreateTooltip('Segoe UI', _scale(7)); // I don't know why this overrides function tooltip() is helper.js.
 
 const chrs = {
   prf: '\ue713',
@@ -88,14 +88,10 @@ let albumart = null;
 let art = {x: 0, y: 0, w: 0, h: 0};
 let awesome = _gdiFont('FontAwesome', 43, 0); // regular: 0, bold: 1, italic: 2, bold_italic: 3, underline: 4, strikeout: 8
 let fluent = _gdiFont('Segoe Fluent Icons', 38, 0);
+
 let vn, vh, vm, n, h, lfm_func, tip;
 let bs = Math.floor(ppt.bs >= 20 && ppt.bs <= 40 ? _scale(ppt.bs) : _scale(28));
 let by = (((panel.h - (seekbar.y + seekbar.h)) - bs) / 2) + (seekbar.y + seekbar.h);
-
-function tfo(tf, font) {
-  this.tf = tf;
-  this.font = font;
-};
 
 let colors = {
   SeekPause: make_rgb(ppt.seekpause),
@@ -157,6 +153,7 @@ function btn(c, d, n, h, t, f, e, z, s) {
   };
 };
 
+//USER SWITCHABLE BUTTON BACKGROUNDS
 function btn_bg (x, w) {
   this.x = x;
   this.y = function () {
@@ -165,6 +162,16 @@ function btn_bg (x, w) {
   this.w = w;
   this.h = function () {
     return Math.floor(bs - _scale(4));
+  };
+};
+
+// OBJECTS FOR TEXT ELEMENTS
+function tfo(tf, size, type) {
+  this.tf = tf;
+  this.size = size;
+  this.type = type;
+  this.font = function () {
+    return utils.CheckFont("Roboto") ? _gdiFont("Roboto", this.size, this.type) : _gdiFont("Segoe UI", this.size, this.type);
   };
 };
 
@@ -189,16 +196,16 @@ function on_paint(gr) {
     summ_x = 10;
 
   // NOW PLAYING TEXT
-  let title = new tfo(fb.TitleFormat(ppt.title), _gdiFont("Roboto", ppt.title_fsize, 1));
-  let artist = new tfo(fb.TitleFormat(ppt.artist), _gdiFont("Roboto", ppt.artist_fsize, 0));
-  let album = new tfo(fb.TitleFormat(ppt.album), _gdiFont("Roboto", ppt.album_fsize, 0));
-  let pb_time = new tfo(fb.TitleFormat(ppt.pb_time), _gdiFont("Roboto", 9, 0));
-  let pb_len = new tfo(fb.TitleFormat(ppt.pb_len), _gdiFont("Roboto", 9, 0));
-  let title_hgt = gr.CalcTextHeight(title.tf.Eval(), title.font) * 1.2; // 20% leading added to font height.
-  let artist_hgt = gr.CalcTextHeight(artist.tf.Eval(), artist.font) * 1.2;
-  let album_hgt = gr.CalcTextHeight(album.tf.Eval(), album.font) * 1.2;
-  let time_hgt = gr.CalcTextHeight(pb_time.tf.Eval(), pb_time.font);
-  let pb_time_w = gr.CalcTextWidth(pb_time.tf.Eval(), pb_time.font);
+  let title = new tfo(fb.TitleFormat(ppt.title), ppt.title_fsize, 1);
+  let artist = new tfo(fb.TitleFormat(ppt.artist), ppt.artist_fsize, 0);
+  let album = new tfo(fb.TitleFormat(ppt.album), ppt.album_fsize, 0);
+  let pb_time = new tfo(fb.TitleFormat(ppt.pb_time), 9, 0);
+  let pb_len = new tfo(fb.TitleFormat(ppt.pb_len), 9, 0);
+  let title_hgt = gr.CalcTextHeight(title.tf.Eval(), title.font()) * 1.2; // 20% leading added to font height.
+  let artist_hgt = gr.CalcTextHeight(artist.tf.Eval(), artist.font()) * 1.2;
+  let album_hgt = gr.CalcTextHeight(album.tf.Eval(), album.font()) * 1.2;
+  let time_hgt = gr.CalcTextHeight(pb_time.tf.Eval(), pb_time.font());
+  let pb_time_w = gr.CalcTextWidth(pb_time.tf.Eval(), pb_time.font());
   let handle_h = _scale(ppt.seekbar_handle);
   let handle_y = seekbar.y - ((handle_h - seekbar.h) / 2);
   let time_y = _scale(seekbar.y + (seekbar.h - time_hgt) / 2);
@@ -206,9 +213,9 @@ function on_paint(gr) {
   let summ_w = seekbar.w - _scale(90);
   
   // NOTE: Please use the flag DT_NOPREFIX, or a '&' character will become an underline '_'
-  ppt.summary ? gr.GdiDrawText(title.tf.Eval(), title.font, !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y, summ_w, title_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
-  ppt.summary ? gr.GdiDrawText(artist.tf.Eval(), artist.font, !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y + title_hgt, summ_w, artist_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
-  ppt.summary ? gr.GdiDrawText(album.tf.Eval(), album.font, !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y + title_hgt + artist_hgt, summ_w, album_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
+  ppt.summary ? gr.GdiDrawText(title.tf.Eval(), title.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y, summ_w, title_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
+  ppt.summary ? gr.GdiDrawText(artist.tf.Eval(), artist.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y + title_hgt, summ_w, artist_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
+  ppt.summary ? gr.GdiDrawText(album.tf.Eval(), album.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y + title_hgt + artist_hgt, summ_w, album_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
 
   gr.SetSmoothingMode(2); // Default: 0, HighSpeed: 1, HighQuality: 2, None: 3, AntiAlias: 4
 
@@ -239,8 +246,8 @@ function on_paint(gr) {
   gr.FillEllipse(volbar.x + volbar.pos(), handle_y, handle_h, handle_h, !fb.IsPlaying || fb.IsPaused ? colors.TextHighlight & colors.TextNormal : colors.TextHighlight);
 
   // TIME ELAPSED / TIME REMAINING
-  gr.GdiDrawText(pb_time.tf.Eval(), pb_time.font, !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x - bs - pb_time_w, time_y, _scale(45), Math.floor(seekbar.y / 2), DT_RIGHT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
-  gr.GdiDrawText(pb_len.tf.Eval(), pb_len.font, !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x + seekbar.w + _scale(10), time_y, _scale(35), Math.floor(seekbar.y / 2), DT_LEFT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
+  gr.GdiDrawText(pb_time.tf.Eval(), pb_time.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x - bs - pb_time_w, time_y, _scale(45), Math.floor(seekbar.y / 2), DT_RIGHT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
+  gr.GdiDrawText(pb_len.tf.Eval(), pb_len.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x + seekbar.w + _scale(10), time_y, _scale(35), Math.floor(seekbar.y / 2), DT_LEFT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
 
   buttons.paint(gr);
 }
@@ -275,7 +282,6 @@ buttons.update = function () {
   let ds = new btn(1, 'dsp', _chrToImg(chrs.dsp, colors.TextNormal, fluent), _chrToImg(chrs.dsp, colors.TextHighlight, fluent), 'DSP Prefs', function () { fb.RunMainMenuCommand('Playback/DSP Settings/Preferences'); }, fx);
   let se = new btn(2, 'search', _chrToImg(chrs.search, colors.TextNormal, fluent), _chrToImg(chrs.search, colors.TextHighlight, fluent), 'Facets Search', function () { fb.RunMainMenuCommand('Library/Facets'); }, fx);
   let sa = new btn(3, 'save', _chrToImg(chrs.save, colors.TextNormal, fluent), _chrToImg(chrs.save, colors.TextHighlight, fluent), 'Save all playlists', function () { fb.RunMainMenuCommand('File/Save all playlists...'); }, fx);
-//  let sk = new btn(4, 'skip', _chrToImg(!fb.IsMainMenuCommandChecked('Playback/Skip tracks & use bookmarks') ? chrs.skipoff : chrs.skip, colors.TextNormal, awesome), _chrToImg(chrs.skip, colors.TextNormal, awesome), 'Enable foo_skip component', function () { fb.RunMainMenuCommand('Playback/Skip tracks & use bookmarks'); }, fx);
   let sk = new btn(4, 'skip', _chrToImg(!fb.IsMainMenuCommandChecked('Playback/Skip tracks & use bookmarks') ? chrs.skipoff : chrs.skip, colors.TextNormal, fluent), _chrToImg(chrs.skip, colors.TextHighlight, fluent), 'Enable foo_skip component', function () { fb.RunMainMenuCommand('Playback/Skip tracks & use bookmarks'); }, fx);
   let vo = new btn(0, 'volume', _chrToImg(vb, colors.TextNormal, fluent), _chrToImg(vb, colors.TextHighlight, fluent), 'Volume: ' + vm + ' dB', function () { fb.VolumeMute(); });
 
@@ -338,7 +344,7 @@ function lfm_icons() {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-// callbacks
+//										               callbacks       		                      //
 ////////////////////////////////////////////////////////////////////////////////
 
 function on_colors_changed() {
