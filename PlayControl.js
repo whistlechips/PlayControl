@@ -60,7 +60,7 @@ let ppt = {
   seekpause: window.GetProperty('Custom Color Seekbar Paused (r,g,b)', '16,16,16'),
   heart: window.GetProperty('Custom Color Love Heart (r,g,b)', '95,0,16'),
   showalbumart: window.GetProperty('Now Playing Album Art Display', true),
-  artsize: window.GetProperty('Now Playing Album Art Size (20-75px)', 60),
+  artsize: window.GetProperty('Now Playing Album Art Size (px)', 60),
   summary: window.GetProperty('Now Playing Summary Display', true),
   title_fsize: window.GetProperty('Now Playing Font Size Title', 10),
   artist_fsize: window.GetProperty('Now Playing Font Size Artist', 9),
@@ -73,7 +73,7 @@ let ppt = {
   seekbar_border: window.GetProperty('Seekbar Border', false),
   volbar_border: window.GetProperty('Volume Bar Border', false),
   panel_border: window.GetProperty('Panel Border', false),
-  seekbar_handle: window.GetProperty('Seekbar Handle Size (px)', 10),
+  seekbar_handle: window.GetProperty('Seekbar Handle Size (px)', 12),
   seekbar_height: window.GetProperty('Seekbar Thickness (px)', 6),
   play_btn_count: 7, // NUMBER OF PLAYBACK AND SHORTCUT CONTROL BUTTONS UNDER SEEKBAR AND VOLUME BAR.
   short_btn_count: 5,
@@ -91,7 +91,10 @@ let fluent = _gdiFont('Segoe Fluent Icons', 38, 0);
 
 let vn, vh, vm, n, h, lfm_func, tip;
 let bs = Math.floor(ppt.bs >= 20 && ppt.bs <= 40 ? _scale(ppt.bs) : _scale(28));
-let by = (((panel.h - (seekbar.y + seekbar.h)) - bs) / 2) + (seekbar.y + seekbar.h);
+
+let handle_h = 0;
+let handle_y = 0;
+let time_y = 0;
 
 let colors = {
   SeekPause: make_rgb(ppt.seekpause),
@@ -127,13 +130,13 @@ function btn(c, d, n, h, t, f, e, z, s) {
   this.y = function () {
     switch (true) {
     case this.d == 'play':
-      return (((panel.h - (seekbar.y + seekbar.h)) - bs) / 2) + (seekbar.y + seekbar.h) - (bs * .25);
+      return (seekbar.y + seekbar.h + _scale(4)) - (bs * .25);
       break;
     case this.d == 'volume':
-      return _scale(volbar.y - (bs / 2.75));
+      return  volbar.y - ((bs - volbar.h) / 2);
       break;
     default:
-      return (((panel.h - (seekbar.y + seekbar.h)) - bs) / 2) + (seekbar.y + seekbar.h);
+      return (seekbar.y + seekbar.h + _scale(4));
     };
   };
   this.z = function () { //button size
@@ -157,7 +160,7 @@ function btn(c, d, n, h, t, f, e, z, s) {
 function btn_bg (x, w) {
   this.x = x;
   this.y = function () {
-    return Math.floor((((panel.h - (seekbar.y + seekbar.h)) - bs) / 2) + (seekbar.y + seekbar.h) + _scale(1.5));
+    return (seekbar.y + seekbar.h + _scale(4)) + _scale(1.5);
   };
   this.w = w;
   this.h = function () {
@@ -190,8 +193,8 @@ function on_paint(gr) {
   let summ_x; // X POS FOR SUMMARY TEXT
   albumart = utils.GetAlbumArtV2(panel.metadb, 0);
   if (albumart && ppt.showalbumart) {
-    _drawImage(gr, albumart, art.x, art.y, art.w, art.h, image.centre);
-    summ_x = art.x == 0 ? art.w + 10 : art.w + (art.x * 2);
+    _drawImage(gr, albumart, art.x, art.y, art.w, art.h);
+    summ_x = art.x == 0 ? art.x + art.w + 8 : art.w + (art.x + 8);
   } else
     summ_x = 10;
 
@@ -206,11 +209,10 @@ function on_paint(gr) {
   let album_hgt = gr.CalcTextHeight(album.tf.Eval(), album.font()) * 1.2;
   let time_hgt = gr.CalcTextHeight(pb_time.tf.Eval(), pb_time.font());
   let pb_time_w = gr.CalcTextWidth(pb_time.tf.Eval(), pb_time.font());
-  let handle_h = _scale(ppt.seekbar_handle);
-  let handle_y = seekbar.y - ((handle_h - seekbar.h) / 2);
-  let time_y = _scale(seekbar.y + (seekbar.h - time_hgt) / 2);
+  let pb_time_x = seekbar.x - pb_time_w;
   let summ_y = art.y + ((art.h - (title_hgt + artist_hgt + album_hgt)) / 2);
-  let summ_w = seekbar.w - _scale(90);
+  let summ_w = (seekbar.x - bs - pb_time_w) - summ_x;
+  time_y = seekbar.y - ((time_hgt - seekbar.h) / 2);
   
   // NOTE: Please use the flag DT_NOPREFIX, or a '&' character will become an underline '_'
   ppt.summary ? gr.GdiDrawText(title.tf.Eval(), title.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, summ_x, summ_y, summ_w, title_hgt, DT_LEFT | DT_VCENTER | DT_NOPREFIX | DT_END_ELLIPSIS) : '';
@@ -246,8 +248,8 @@ function on_paint(gr) {
   gr.FillEllipse(volbar.x + volbar.pos(), handle_y, handle_h, handle_h, !fb.IsPlaying || fb.IsPaused ? colors.TextHighlight & colors.TextNormal : colors.TextHighlight);
 
   // TIME ELAPSED / TIME REMAINING
-  gr.GdiDrawText(pb_time.tf.Eval(), pb_time.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x - bs - pb_time_w, time_y, _scale(45), Math.floor(seekbar.y / 2), DT_RIGHT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
-  gr.GdiDrawText(pb_len.tf.Eval(), pb_len.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x + seekbar.w + _scale(10), time_y, _scale(35), Math.floor(seekbar.y / 2), DT_LEFT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
+  gr.GdiDrawText(pb_time.tf.Eval(), pb_time.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, pb_time_x, time_y, pb_time_w, time_hgt, DT_RIGHT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
+  gr.GdiDrawText(pb_len.tf.Eval(), pb_len.font(), !fb.IsPlaying || fb.IsPaused ? colors.TextNormal : colors.TextHighlight, seekbar.x + seekbar.w + _scale(10), time_y, _scale(35), time_hgt, DT_LEFT | DT_VCENTER | DT_CALCRECT | DT_NOPREFIX | DT_END_ELLIPSIS);
 
   buttons.paint(gr);
 }
@@ -258,7 +260,6 @@ function on_paint(gr) {
 
 buttons.update = function () {
 
-  //  let vol_chrs = [chrs.mute, chrs.vol0, chrs.vol1, chrs.vol2, chrs.vol3];
   let pbo_chrs = [chrs.repeat_off, chrs.repeat_all, chrs.repeat_one, chrs.random, chrs.shuffle, chrs.album, chrs.folder];
   let pbo_names = ['repeat_off', 'repeat_all', 'repeat_one', 'random', 'shuffle', 'album', 'folder'];
   let pbo = plman.PlaybackOrder; // 0-Default, 1-Repeat (Playlist),2-Repeat (Track),3-Random,4-Shuffle (tracks),5-Shuffle (albums),6-Shuffle (folders)
@@ -497,20 +498,29 @@ function on_playlist_switch() {
 
 function on_size() {
   panel.size();
+  let art_spc = 8; //spacer around album art
   let bar_h = ppt.seekbar_height > 1 ? _scale(ppt.seekbar_height) : 2;
-  let bar_y = _scale(12);
+
+  art.h = ppt.artsize >= 20 && ppt.artsize <= (panel.h - (art_spc * 2)) ? ppt.artsize : 59;
+  art.w = art.h;
+  art.x = art_spc;
+  art.y = ((panel.h - ((art_spc * 2) + art.h)) / 2) >= art_spc ? ((panel.h - ((art_spc * 2) + art.h)) / 2) : art_spc;// + (seekbar.y + seekbar.h);
+
+  let bar_y = art.y + art_spc;
+
   seekbar.x = Math.round(panel.w / 3);
   seekbar.y = bar_y;
   seekbar.w = Math.round(panel.w / 3);
   seekbar.h = bar_h;
+
   volbar.y = bar_y;
   volbar.w = Math.round(panel.w / 6);
   volbar.x = Math.round(panel.w - volbar.w) - _scale(ppt.bs);
   volbar.h = bar_h;
-  art.w = Math.round(ppt.artsize > 19 && ppt.artsize <= panel.h ? ppt.artsize : 60);
-  art.h = art.w;
-  art.x = art.w < panel.h ? Math.round((panel.h - art.h) / 2) : 0;
-  art.y = art.x;
+
+  handle_h = Math.floor(ppt.seekbar_handle) > (bar_h * 2) ? (bar_h * 2) : Math.floor(ppt.seekbar_handle);
+  handle_y = seekbar.y - ((handle_h - seekbar.h) / 2);
+
   buttons.update();
   window.Repaint();
 }
