@@ -2,6 +2,10 @@
 Foobar2000 Spider Monkey (@TheQwertiest) single panel javascript with user configurable settings via the SMP Properties dialog.  Based on: "track info + seekbar + buttons.js" and "last.fm lover.js" by @marc2k3.
 ![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
 
+Installation:
+
+Add the directory "PlayControl" to your Foobar2000 user profile directory (i.e. "C:\Users\XXXXXXXXXX\AppData\Roaming\foobar2000\") where "XXXXXXXXXX" is your Windows Username.  Then download and unzip "PlayControl.zip" into it.  Add "PlayControl.js" to a Spider Monkey panel.
+
 Requirements:
 
 Foobar2000: https://www.foobar2000.org/download
