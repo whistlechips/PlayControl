@@ -25,5 +25,4 @@ Spider Monkey Configuration -> Properties: (with default values)
 Limit(s) are indicated, if any. If things get really messed up, on the Properties panel, click “Clear”, then”Apply”. All defaults will be restored.
 ![image](https://github.com/user-attachments/assets/06148e5d-6fdc-4524-91d6-6eefe1712195)
 
-NB: There is a requirement in the SMP FillRoundRect() function that the 'arc' width and height parameters be no more than double the seek bar or volume bar width and height.  Although the formula that calculates their values attempts to account for this, occasionally when loading an error "Arc argument has invalid value" will cause the panel to crash.  Just right-click and Reload if that happens.
-
+FillRoundRect() problem with the 'arc' width and height parameters has been solved.
