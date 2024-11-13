@@ -27,7 +27,7 @@ The second set, under the Volume Bar:<br>
 
 ## Installation:
 Add the directory "PlayControl" to your Foobar2000 user profile directory (i.e. "C:\Users\XXXXXXXXXX\AppData\Roaming\foobar2000\") where "XXXXXXXXXX" is your Windows Username.<br>
-Then download and unzip "PlayControl.zip" into it.  Add "PlayControl.js" to a Spider Monkey panel.<br?
+Then download and unzip "PlayControl.zip" into it.  Add "PlayControl.js" to a Spider Monkey panel.<br>
 ![image](https://github.com/user-attachments/assets/d7e99f1d-f1e4-465b-911f-c756b5cdf659)
 
 ## Requirements:
