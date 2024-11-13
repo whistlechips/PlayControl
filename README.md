@@ -24,12 +24,12 @@ The second set, under the Volume Bar:<br>
   <li>Save all playlists.</li>
   <li>Enable/disable Foo_Skip component.</li>
 </ul>
-<br>
+
 ## Installation:
 Add the directory "PlayControl" to your Foobar2000 user profile directory (i.e. "C:\Users\XXXXXXXXXX\AppData\Roaming\foobar2000\") where "XXXXXXXXXX" is your Windows Username.<br>
 Then download and unzip "PlayControl.zip" into it.  Add "PlayControl.js" to a Spider Monkey panel.<br?
 ![image](https://github.com/user-attachments/assets/d7e99f1d-f1e4-465b-911f-c756b5cdf659)
-<br>
+
 ## Requirements:
 <ul>
   <li>Foobar2000: https://www.foobar2000.org/download</li>
@@ -38,16 +38,19 @@ Then download and unzip "PlayControl.zip" into it.  Add "PlayControl.js" to a Sp
   <li>Roboto font (default): https://fonts.google.com/specimen/Roboto, falls back to Segoe UI if not installed.</li>
 </ul>
 <br>
+
 Full screen ColumnsUI shot with PlayControl SMP panel at the bottom of the Foobar2000 window, under control of the PS Splitter at the top of the screen:<br>
 ![image](https://github.com/user-attachments/assets/10a6f8f9-49f6-4e5a-a8e4-9c853f5ec1a5)
 <br>
-Suggested Height of panel: 75px (can be adjusted with caution)<br>
-<br>
-Start with:<br>
+
+### Start with:<br>
 ![image](https://github.com/user-attachments/assets/83984343-a16c-41f1-9116-d6baf71fb2bf)
 <br>
-Spider Monkey User Configuration -> Properties: (with default values)<br>
+Suggested starting points for Height and Width of panel: 75px (can be adjusted with caution).  The script will attempt to fit and position items automatically.  Anything too small and things can get ugly.<br>
+
+### User Changable Settings:
+Right Click -> Configure... -> Properties (tab): (with default values)<br>
 Limit(s) are indicated, if any. If things get really messed up, on the Properties panel, click “Clear”, then”Apply”. All defaults will be restored.<br>
-![image](https://github.com/user-attachments/assets/06148e5d-6fdc-4524-91d6-6eefe1712195)
+![image](https://github.com/user-attachments/assets/5af92564-4444-4027-95e9-cefd00af9724)
 <br>
-FillRoundRect() problem with the 'arc' width and height parameters has been solved.<br>
+If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
