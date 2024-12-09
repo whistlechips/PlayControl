@@ -51,6 +51,29 @@ Suggested starting points for Height and Width of panel: 75px (can be adjusted w
 ### User Changable Settings:
 Right Click -> Configure... -> Properties (tab): (with default values)<br>
 Limit(s) are indicated, if any. If things get really messed up, on the Properties panel, click “Clear”, then”Apply”. All defaults will be restored.<br>
-![image](https://github.com/user-attachments/assets/5af92564-4444-4027-95e9-cefd00af9724)
+![Clipboard_12-09-2024_01](https://github.com/user-attachments/assets/50f41795-8418-407b-b229-bce2eea7df8e)
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
+
+### v1.2.0 Changes:
+<ul>
+  <li>Panel background can now have the playing album cover as a wallpaper. </li>
+    <ul>
+      <li>Wallpaper can be blurred. </li>
+      <li>Amount of blur can be changed. </li>
+      <li>Wallpaper: Alpha Property controls transparancy.</li>
+    </ul>
+  <li>Transport and/or Shortcut buttons can now have a rounded, retangular background behind them to make them stand out. </li>
+    <ul>
+      <li>Transparency of rectangle(s) can be adjusted. </li>
+      <li>A border can be applied to the rectangle(s). </li>
+      <li>Wallpaper: Alpha Property controls transparancy.</li>
+      <li>Custom Color Seekbar Paused Property also controls color of rectangle(s).</li>
+    </ul>
+</ul>
+<br>
+![Clipboard_12-09-2024_02](https://github.com/user-attachments/assets/0a9738df-a5aa-4118-9107-5594b575d733)
+![Clipboard_12-09-2024_03](https://github.com/user-attachments/assets/44f47c9a-ce00-4fe8-a76b-e0e31e89d9b6)
+
+<br>
+
