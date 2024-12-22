@@ -55,6 +55,11 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.2.1 Changes:
+<ul>
+  <li>Code cleanup and Preferences reorganization. </li>
+</ul>
+
 ### v1.2.0 Changes:
 ![Clipboard_12-09-2024_02](https://github.com/user-attachments/assets/0a9738df-a5aa-4118-9107-5594b575d733)
 ![Clipboard_12-09-2024_03](https://github.com/user-attachments/assets/44f47c9a-ce00-4fe8-a76b-e0e31e89d9b6)
