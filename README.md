@@ -34,6 +34,7 @@ Then download and unzip "PlayControl.zip" into it.  Add "PlayControl.js" to a Sp
 <ul>
   <li>Foobar2000: https://www.foobar2000.org/download</li>
   <li>Spider Monkey Panel component, @TheQwertiest: https://theqwertiest.github.io/foo_spider_monkey_panel/</li>
+  <li>Skip Track component: https://www.foobar2000.org/components/view/foo_skip/</li>
   <li>Segoe Fluent Icons font: https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font</li>
   <li>Roboto font (default): https://fonts.google.com/specimen/Roboto, falls back to Segoe UI if not installed.</li>
 </ul>
