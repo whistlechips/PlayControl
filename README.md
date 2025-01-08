@@ -56,6 +56,11 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.2.3 Changes:
+<ul>
+  <li>Checks the availability of foo_skip component, disables skip button if not true. </li>
+</ul>
+
 ### v1.2.2 Changes:
 <ul>
   <li>Adjust transparency of borders. </li>
