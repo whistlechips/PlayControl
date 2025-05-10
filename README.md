@@ -56,6 +56,15 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.2.5 Changes:
+- Disabled `"utils.GetAlbumArtV2(fb.GetFocusItem(), 0)`".  This does not allow showing art when initially starting FB2000 but finally kills the error that rises when a playing song/playlist is deleted.
+
+### v1.2.4 Changes:
+- Changed icons for Playback Orders; Random and Default.
+- Updated 'tip' text for Playback Orders.
+- Fixed bug where deleting an active playlist when the panel used background wallpaper causes a crash.
+- Include 'props.json' with example customized Properties.
+
 ### v1.2.3 Changes:
 <ul>
   <li>Checks the availability of foo_skip component, disables skip button if not true. </li>
