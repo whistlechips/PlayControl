@@ -56,6 +56,10 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.3.0 Changes:
+- Mod Wallpaper and Album art functionality.
+- General code cleanup and optimization.
+
 ### v1.2.6 Changes:
 Now using fb.GetFocusItem() in its own PlayControl helper function, instead of fb.GetNowPlaying() in a callback to utils.GetAlbumArtV2() to get the proper albumart, along with modification/addition of if() statements to select appropriate above function.
 
