@@ -57,7 +57,7 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
 ### v1.4.0 Changes:
-- Major AI optimization and modularization. Notes in source files.
+- Major optimization and modularization. Notes in source files.
 
 ### v1.3.0 Changes:
 - Mod Wallpaper and Album art functionality.
