@@ -56,6 +56,11 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.4.1 Changes:
+- New Property added: "Album Art Run".  Left-clicking on the Album Art (if enabled) launches a FB2K Context Command via the foo_run component, which must be installed.  See https://www.foobar2000.org/components/view/foo_run for more info and download link.  The Property VALUE is a Named Service in this component (FB2K: Preferences > Tools > Run services).  Default is the included 'Google Artist + Title' service.  This can be changed to another or a new service can be added and this VALUE can be edited.  
+- Old SAVE button is now "Button: Shortcut Run".  It sends its VALUE to the same foo_run component.  Again, this can be changed to another FB2K Context Command or a new service can be added and this VALUE can be edited.
+- To get these to display on the Properties screen/tab: click the CLEAR button, then APPLY.
+
 ### v1.4.0 Changes:
 - Major optimization and modularization. Notes in source files.
 
