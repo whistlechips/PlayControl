@@ -56,13 +56,25 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.5.0 Changes:
+- Folded drawVolumeBar() function into drawSeekbar().
+- Combined Shortcut and Transport button background and border settings into one.
+- Updated drawButtons() to accomodate above combination.
+- Changed colors.ButtonBackground to be a color overlay of wallpaper using alpha _RGBA(0, 0, 0, 96).
+- Seekbar: Paused and Playing Colors are no longer used.  Value shared with buttonBackground.
+- Various other minor code clean-ups.
+- Optimized make_rgb() function that supports both:
+  -   RGB(A) comma-separated strings like "255,128,64" or "255,128,64,128"
+  -   Hex color strings like "#FF8040", "FF8040", or even short format "#F83"
+
 ### v1.4.1 Changes:
-- New Property added: "Album Art Run".  Left-clicking on the Album Art (if enabled) launches a FB2K Context Command via the foo_run component, which must be installed.  See https://www.foobar2000.org/components/view/foo_run for more info and download link.  The Property VALUE is a Named Service in this component (FB2K: Preferences > Tools > Run services).  Default is the included 'Google Artist + Title' service.  This can be changed to another or a new service can be added and this VALUE can be edited.  
+- New Property added: "Album Art Run".  Left-clicking on the Album Art (if enabled) launches a FB2K Context Command via the foo_run component, which must be installed.  See https://www.foobar2000.org/components/view/foo_run for more info and download link.  The Property VALUE is a Named Service in this component (FB2K: Preferences > Tools > Run services).  Default is the included 'Google Artist + Title' 
+service.  This can be changed to another or a new service can be added and this VALUE can be edited.  
 - Old SAVE button is now "Button: Shortcut Run".  It sends its VALUE to the same foo_run component.  Again, this can be changed to another FB2K Context Command or a new service can be added and this VALUE can be edited.
 - To get these to display on the Properties screen/tab: click the CLEAR button, then APPLY.
 
 ### v1.4.0 Changes:
-- Major optimization and modularization. Notes in source files.
+- Major AI optimization and modularization. Notes in source files.
 
 ### v1.3.0 Changes:
 - Mod Wallpaper and Album art functionality.
