@@ -56,6 +56,10 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.5.1 Changes:
+- Button Tool Tips modularized.
+- Changed inline button functions into a consolidated structure btnHandlers. 
+
 ### v1.5.0 Changes:
 - Folded drawVolumeBar() function into drawSeekbar().
 - Combined Shortcut and Transport button background and border settings into one.
