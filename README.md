@@ -52,7 +52,7 @@ Suggested starting points for Height and Width of panel: 75px (can be adjusted w
 ### User Changable Settings:
 Right Click -> Configure... -> Properties (tab): (with default values)<br>
 Limit(s) are indicated, if any. If things get really messed up, on the Properties panel, click “Clear”, then”Apply”. All defaults will be restored.<br>
-![image](https://github.com/user-attachments/assets/8a38d21a-09f7-46ee-8e37-63af601cee59)
+![image]<img width="1058" height="740" alt="image" src="https://github.com/user-attachments/assets/36aeb67c-ef9a-4138-8838-28b5eda71c1c" />
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
