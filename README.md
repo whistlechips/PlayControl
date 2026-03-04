@@ -1,7 +1,7 @@
 # PlayControl
 Foobar2000 Spider Monkey (@TheQwertiest) single panel javascript with user configurable settings via the SMP Properties dialog.<br>
 Based on: "track info + seekbar + buttons.js" and "last.fm lover.js" by @marc2k3.<br>
-![image](https://github.com/user-attachments/assets/c18354e5-f536-4dd1-b365-21649329dc37)
+<img width="1171" height="76" alt="image" src="https://github.com/user-attachments/assets/6cf3844c-640f-41b1-b659-7eeaa47630e6" />
 <br>
 ## Features:
 Two sets of buttons, one for transport control of FB2K's playback functionality which is located below the center Seekbar:<br>
@@ -52,9 +52,20 @@ Suggested starting points for Height and Width of panel: 75px (can be adjusted w
 ### User Changable Settings:
 Right Click -> Configure... -> Properties (tab): (with default values)<br>
 Limit(s) are indicated, if any. If things get really messed up, on the Properties panel, click “Clear”, then”Apply”. All defaults will be restored.<br>
-![image]<img width="1058" height="740" alt="image" src="https://github.com/user-attachments/assets/36aeb67c-ef9a-4138-8838-28b5eda71c1c" />
+![image](https://github.com/user-attachments/assets/8a38d21a-09f7-46ee-8e37-63af601cee59)
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
+
+### v1.5.3 Changes:
+- drawSummaryText() function now computes its own width to allow longer TF strings for Now Playing Line 2 and 3. 
+- Combined duplicate parameters passed between functions btn() and make_button().
+- Updated make_rgb() function to use both Hyphen and Comma-separated formats --- 3/4/2026
+- Made second line of Now Playing Text bold.
+
+### v1.5.2 Changes:
+- Fixed lost summ.w assignment in drawSummaryText().
+- Fix the "Unexpected token >" error and correctly expand shorthand hex colors.
+- Modified code with try...catch blocks added around the two FillRoundRect calls in drawButtonsBgBorder().
 
 ### v1.5.1 Changes:
 - Button Tool Tips modularized.
