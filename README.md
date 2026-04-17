@@ -56,6 +56,9 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.5.4 Changes:
+- function getAlternatingColor() sets an interval for blinking the Play button. Alternates between TextNormal and TextHighlight when Foobar2000 is playing.  When paused blinking is stopped and only TextNormal is used.
+
 ### v1.5.3 Changes:
 - drawSummaryText() function now computes its own width to allow longer TF strings for Now Playing Line 2 and 3. 
 - Combined duplicate parameters passed between functions btn() and make_button().
