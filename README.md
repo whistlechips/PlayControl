@@ -56,6 +56,14 @@ Limit(s) are indicated, if any. If things get really messed up, on the Propertie
 <br>
 If changes are made and you prefer your customizations, use the Export button to save them to a JSON file so that the Import button can be used to restore them should anything happen.<br>
 
+### v1.5.5 Changes:
+- function drawSummaryText() now paints all summay text in Normal color unless mouse is hovering over, at which it changes to Highlight color.
+- function on_mouse_lbtn_up() now allows Left-clicking on the Summary Title and Album (lines 1 and 2) and if enabled, launches a FB2K Context Command via the foo_run component, which must be installed.  See https://www.foobar2000.org/components/view/foo_run for more info and download link.  The Property VALUE is a Named Service in this component (FB2K: Preferences > Tools > Run services).
+- Right-click now loads full Help menu.
+- 2026-05-25 12:38:02 - duplicate 'over' variable declarations removed (global). 
+- 2026-05-20 10:15:46 - Revert blinking Play button changes. Unintended side effects. (requires more time for development & testing).
+- 2026-08-15: Added ppt.btn_bg_alpha for user selectable colors.ButtonBackground.
+
 ### v1.5.4 Changes:
 - function getAlternatingColor() sets an interval for blinking the Play button. Alternates between TextNormal and TextHighlight when Foobar2000 is playing.  When paused blinking is stopped and only TextNormal is used.
 
@@ -86,7 +94,7 @@ If changes are made and you prefer your customizations, use the Export button to
   -   Hex color strings like "#FF8040", "FF8040", or even short format "#F83"
 
 ### v1.4.1 Changes:
-- New Property added: "Album Art Run".  Left-clicking on the Album Art (if enabled) launches a FB2K Context Command via the foo_run component, which must be installed.  See https://www.foobar2000.org/components/view/foo_run for more info and download link.  The Property VALUE is a Named Service in this component (FB2K: Preferences > Tools > Run services).  Default is the included 'Google Artist + Title' 
+- New Property added: "Album Art Run".  Left-clicking on the Album Art (if enabled) launches a FB2K Context Command via the foo_run component, which must be installed.  See https://www.foobar2000.org/components/view/foo_run for more info and download link.  The Property VALUE is a Named Service in this component (FB2K: Preferences > Tools > Run services).
 service.  This can be changed to another or a new service can be added and this VALUE can be edited.  
 - Old SAVE button is now "Button: Shortcut Run".  It sends its VALUE to the same foo_run component.  Again, this can be changed to another FB2K Context Command or a new service can be added and this VALUE can be edited.
 - To get these to display on the Properties screen/tab: click the CLEAR button, then APPLY.
